@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## MIT 6.S191 - Deep Learning - Course notes 
 
 You can use the [editor on GitHub](https://github.com/ZiedHY/ZiedHY.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
