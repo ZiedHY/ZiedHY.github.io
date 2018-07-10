@@ -1,5 +1,16 @@
 ## MIT 6.S191 - Deep Learning - Course notes 
 
+These are a series of personal notes about the MIT 6.S191 Deep Learning courses that I have virtually attended during last month. 
+
+[Here is a link to the course site](http://introtodeeplearning.com/).
+
+I will go through the first four courses: 
+1.  Introduction to Deep Learning by Alexander Amini
+2.  Sequence Modeling with Neural Networks by Harini Suresh 
+3.  Deep learning for computer vision - Convolutional Neural Networks - by Ava Soleimany 
+4.  Deep generative modeling by Aaron Courville
+
+
 You can use the [editor on GitHub](https://github.com/ZiedHY/ZiedHY.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
