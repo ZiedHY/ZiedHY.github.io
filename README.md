@@ -22,6 +22,8 @@ When it comes to unstructured data (images, text, voice, videos), hand engineere
 
 Improvements in Hardware (GPUs) and Software (advanced models / research related to AI) also contributed to **deepen the learning** from data using Neural Networks.  
 
+The fundamental bulding block of Deep Learning is **The Perceptron** which is a single neuron in a Neural Network. 
+
 
 You can use the [editor on GitHub](https://github.com/ZiedHY/ZiedHY.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
