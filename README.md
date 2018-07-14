@@ -29,7 +29,9 @@ Given a finite set of _m_ inputs (e.g. _m_ words or _m_ pixels), we multiply eac
 ![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/Perceptron.PNG)
 
 *   The bias _theta 0_ allows to add another dimension to the input space. Thus, the activation function still provide an output in case of an input vector of all zeros. It is somehow the part of the output that is independent of the input.
-*   The purpose of activation functions is to introduce non-linearities into the network. In fact, linear activation functions produce linear decisions no matter the input distribution. Non-linearities allow us to better approximate arbitrarily complex functions. 
+*   The purpose of activation functions is to introduce non-linearities into the network. In fact, linear activation functions produce linear decisions no matter the input distribution. Non-linearities allow us to better approximate arbitrarily complex functions. Here some examples of common activation functions: 
+![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/ActivationFunctions.PNG)
+
 
 You can use the [editor on GitHub](https://github.com/ZiedHY/ZiedHY.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
