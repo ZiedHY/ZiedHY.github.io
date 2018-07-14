@@ -32,12 +32,16 @@ Given a finite set of _m_ inputs (e.g. _m_ words or _m_ pixels), we multiply eac
 *   The purpose of activation functions is to introduce non-linearities into the network. In fact, linear activation functions produce linear decisions no matter the input distribution. Non-linearities allow us to better approximate arbitrarily complex functions. Here some examples of common activation functions: 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/ActivationFunctions.PNG)
 
-Deep Neural Networks are no more than a stacking of multiple perceptrons (hidden layers) to produce an output. 
+Deep Neural Networks are no more than a **stacking** of multiple perceptrons (hidden layers) to produce an output. 
 ![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/FullyConnected.PNG)
 
+Now, once we have understood the basic architecture of a deep neural network, let us find out how it can be used for a given task. 
 
+Let us say, for a set of X-ray images, we need the model to automatically distinguish those that are related to a sick patient from the others. 
 
+For that, machine learning models, like humans, need to learn to differentiate between the two categories of images by **observing** some images of both sick and healthy individuals. Hence, they automatically understand patterns that better describe each category. This is what we call **the training phase**.  
 
+Concretely, a pattern is a weighted combination of some inputs (images, parts of images or other patterns). Hence, the training phase is nothing more than the phase during which we estimate the weights (also called parameters) of the model. 
 
 
 
