@@ -1,6 +1,6 @@
 ## MIT 6.S191 - Deep Learning - Course notes 
 
-These are a series of personal notes about the MIT 6.S191 Deep Learning courses that I have virtually attended during last month. 
+This is a series of personal notes about the MIT 6.S191 Deep Learning courses that I have virtually attended during the last few weeks. 
 
 [Here is a link to the course site](http://introtodeeplearning.com/).
 
