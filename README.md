@@ -49,6 +49,7 @@ In the presence of input data, we calculate an empirical loss (binary cross entr
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/EmpiricalLossFunction.PNG)
 
 Our task it to find the network weights _theta_ that achieve the lowest loss: 
+
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/WeightEstimation.PNG)
 
 
