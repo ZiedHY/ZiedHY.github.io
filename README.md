@@ -43,6 +43,10 @@ For that, machine learning models, like humans, need to learn to differentiate b
 
 Concretely, a pattern is a weighted combination of some inputs (images, parts of images or other patterns). Hence, the training phase is nothing more than the phase during which we estimate the weights (also called parameters) of the model. 
 
+When we talk about estimation, we talk about an **objective function** we have to optimize. This function shall be constructed to reflect the best the performance of the training phase. When it comes to prediction tasks, this objective function is usually called **loss function** and measures the cost incurred from incorrect predictions. When the model predict something that is very close to the true output then the loss function is very low, and vice-versa. 
+
+In the presence of input data, we calculate an empirical loss that measures the total loss over our entire dataset: 
+![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/EmpiricalLossFunction.PNG)
 
 
-
+ 
