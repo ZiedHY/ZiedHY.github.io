@@ -48,6 +48,7 @@ When we talk about estimation, we talk about an **objective function** we have t
 In the presence of input data, we calculate an empirical loss (binary cross entropy loss in case of classification and mean squared error loss in case of regression) that measures the total loss over our entire dataset: 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/EmpiricalLossFunction.PNG)
 
-Our task it to find the set of weights _theta_ that minimize the loss overall the training set.  
+Our task it to find the network weights _theta_ that achieve the lowest loss: 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/WeightEstimation.PNG)
+
 
