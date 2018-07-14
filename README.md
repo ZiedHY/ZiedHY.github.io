@@ -24,6 +24,7 @@ Improvements in Hardware (GPUs) and Software (advanced models / research related
 
 The fundamental bulding block of Deep Learning is **The Perceptron** which is a single neuron in a Neural Network. 
 
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/Perceptron.PNG)
 
 You can use the [editor on GitHub](https://github.com/ZiedHY/ZiedHY.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
