@@ -74,4 +74,6 @@ Thus, the backpropagation consists in **repeating this process for every weight 
 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/Backpropagation.PNG)
 
-*   dsds
+### Neural Networks in practice:
+
+*  Modern neural network architectures are not convex. Thus, gradient descent is very difficult - there a possibility to get lost and not find global minima. The computation is highly expensive  
