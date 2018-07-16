@@ -60,7 +60,8 @@ To minimize the loss function, we can apply the gradient descent algorithm:
 
 1.  First, we randomly pick an initial p-vector of weights (e.g. following a normal distribution). 
 2.  Then, we compute the gradient of the loss function in the initial p-vector. 
-3.  The gradient direction indicates the direction to take in order to maximise the loss function. So, we take a small step in the opposite direction of gradient and we update weights' values accordingly using this update rule: ![Octocat] (https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/UpdateRule.PNG)
+3.  The gradient direction indicates the direction to take in order to maximise the loss function. So, we take a small step in the opposite direction of gradient and we update weights' values accordingly using this update rule: 
+![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/UpdateRule.PNG)
 
 4.  We move continuously until convergence to reach the lowest point of this landscape (local minima). 
 
