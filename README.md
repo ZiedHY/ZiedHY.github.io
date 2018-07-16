@@ -62,6 +62,10 @@ To minimize the loss function, we can apply the gradient descent algorithm:
 2.  Then, we compute the gradient of the loss function in the initial p-vector. 
 3.  The gradient direction indicates the direction to take in order to maximise the loss function. So, we take a small step in the opposite direction of gradient and we update weights' values accordingly using this update rule: 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/UpdateRule.PNG)
-
 4.  We move continuously until convergence to reach the lowest point of this landscape (local minima). 
+
+In the update rule, _Etha_ is the **learning rate** and determines how large is the step we take in the direction of our gradient. His choice is very important. If it is too low, the model could stuck in a local minima. If it is too large it could diverge. Adaptive learning rates could be used to adapt the learning rate value for each iteration of the gradient. For more detailed explanation please read this [overview of gradient descent optimization algorithms by Sebastian Ruder](https://arxiv.org/pdf/1609.04747.pdf).
+
+Now the question is how to compute the gradient of the loss function in respect of a given vector of weights? 
+
 
