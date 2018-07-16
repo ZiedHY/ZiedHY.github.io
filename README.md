@@ -48,8 +48,20 @@ When we talk about estimation, we talk about an **objective function** we have t
 In the presence of input data, we calculate an empirical loss (binary cross entropy loss in case of classification and mean squared error loss in case of regression) that measures the total loss over our entire dataset: 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/EmpiricalLossFunction.PNG)
 
-Our task it to find the network weights _theta_ that achieve the lowest loss: 
+Since the loss is a function of the network weights, our task it to find the set of weights _theta_ that achieve the lowest loss: 
 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/WeightEstimation.PNG)
 
+If we only have two weights _theta 0_ and _theta 1_, we can plot the following diagram of the loss function. What we want to do is to find the minimum of this loss and consequently the value of the weights where the loss attains its minimum. 
+
+![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/GradientDescent.PNG)
+
+To minimize the loss function, we can apply the gradient descent algorithm: 
+
+1.  First, we randomly pick an initial p-vector of weights (e.g. following a normal distribution). 
+2.  Then, we compute the gradient of the loss function in the initial p-vector. 
+3.  The gradient direction indicates the direction to take in order to maximise the loss function. So, we take a small step in the opposite direction of gradient and we update weights' values accordingly using this update rule: 
+![Octocat (https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/UpdateRule.PNG)
+
+4.  We move continuously until convergence to reach the lowest point of this landscape (local minima). 
 
