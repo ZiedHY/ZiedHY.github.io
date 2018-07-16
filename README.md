@@ -74,3 +74,4 @@ Thus, the backpropagation consists in **repeating this process for every weight 
 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/Backpropagation.PNG)
 
+*   dsds
