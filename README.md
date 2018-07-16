@@ -66,7 +66,7 @@ To minimize the loss function, we can apply the gradient descent algorithm:
 
 #### NB: 
 
-*   In the update rule, _Etha_ is the **learning rate** and determines how large is the step we take in the direction of our gradient. Its choice is very important. If it is too low, the model could stuck in a local minima. If it is too large it could diverge. Adaptive learning rates could be used to adapt the learning rate value for each iteration of the gradient. For more detailed explanation please read this [overview of gradient descent optimization algorithms by Sebastian Ruder](https://arxiv.org/pdf/1609.04747.pdf).
+*   In the update rule, _Etha_ is the **learning rate** and determines how large is the step we take in the direction of our gradient. Its choice is very important since modern neural network architectures are extremly non-convex. If the learning rate is too low, the model could stuck in a local minimum. If it is too large it could diverge. **Adaptive learning rates** could be used to adapt the learning rate value for each iteration of the gradient. For more detailed explanation please read this [overview of gradient descent optimization algorithms by Sebastian Ruder](https://arxiv.org/pdf/1609.04747.pdf).
 
 *   To compute the gradient of the loss function in respect of a given vector of weights, we use **backpropagation**. 
 Let us consider the simple neural network above. It contains one hidden layer and one output layer. We want to compute the gradient of the loss function with respect to each parameter, let us say to _theta 1_. For that, we start by applying the chain rule because J(_theta_) is only dependent on _Yhat_. And then, we apply the chain rule one more time to backpropagate the gradient one layer further. We can do this, for the same reason, because _z1_ (hidden state) is only depend on the input _x_ and _theta 1_. 
@@ -76,4 +76,11 @@ Thus, the backpropagation consists in **repeating this process for every weight 
 
 ### Neural Networks in practice:
 
-*  Modern neural network architectures are not convex. Thus, gradient descent is very difficult - there a possibility to get lost and not find global minima. The computation is highly expensive  
+*  In presence of a large dataset, the computation of the gradient in respect of each weight can be very expensive (think about the chain rule in backpropagation). For that, we could compute the gradient on a subset of data (mini-bach) and use it as an estimate of the true gradient. This gives a more accurate estimation of the gradient than the stochastic gradient descent (SGD) which randomly takes only one observation and much more faster than calculating the gradient using all data. Using mini-baches for each iteration leads to fast training especially when we use different threads (GPU's). We can parallelize computing for each iteration: a bach for each weight and gradient is calculated in a seperate thread. Than, calculations are gathered together to complete the iteration  
+
+*  Juste like any other "classical" machine learning algorithm, Neural Networks could face the problem of overfitting. Ideally, in machine learning, **we want to build models that can learn representations from a training data and still generalize well on unseen test data**. Regularization is a technique that constrains our optimization problem to discourage complex models (i.e. to avoid memorizing data). When we talk about regularization, we generally talk about **Dropout**: during the training phase and in each iteration, we randomly dropout some proportion of the hidden neurals (dropout i.e. associated activations become 0) and/or **Early stopping**: stop training before we have a chance to overfit. For that, we calulate the loss in training and test phase in function of the number of training iterations. We stop when the loss function in the test phase starts to increase. 
+
+
+
+
+
