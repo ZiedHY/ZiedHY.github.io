@@ -64,8 +64,15 @@ To minimize the loss function, we can apply the gradient descent algorithm:
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/UpdateRule.PNG)
 4.  We move continuously until convergence to reach the lowest point of this landscape (local minima). 
 
-In the update rule, _Etha_ is the **learning rate** and determines how large is the step we take in the direction of our gradient. His choice is very important. If it is too low, the model could stuck in a local minima. If it is too large it could diverge. Adaptive learning rates could be used to adapt the learning rate value for each iteration of the gradient. For more detailed explanation please read this [overview of gradient descent optimization algorithms by Sebastian Ruder](https://arxiv.org/pdf/1609.04747.pdf).
+#### NB: 
 
-Now the question is how to compute the gradient of the loss function in respect of a given vector of weights? 
+*   In the update rule, _Etha_ is the **learning rate** and determines how large is the step we take in the direction of our gradient. Its choice is very important. If it is too low, the model could stuck in a local minima. If it is too large it could diverge. Adaptive learning rates could be used to adapt the learning rate value for each iteration of the gradient. For more detailed explanation please read this [overview of gradient descent optimization algorithms by Sebastian Ruder](https://arxiv.org/pdf/1609.04747.pdf).
+
+*   To compute the gradient of the loss function in respect of a given vector of weights, we use **backpropagation**. 
+Let us consider this simple neural network. It contains one hidden layer and one output layer. We want to compute the gradient of the loss function with respect to each parameter, let us say to _theta 1_. For that, we start by applying the chain rule because J(_theta_) is only dependent on _Yhat_. And then, we apply the chain rule one more time to backpropagate the gradient one layer further. We can do this, for the same reason, because _z1_ (hidden state) is only depend on the input _x_ and _theta 1_. 
+Thus, the backpropagation consists in **repeating this process for every weight in the network using gradients from later layers**. 
+
+
+![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/Backpropagation.PNG)
 
 
