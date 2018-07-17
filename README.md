@@ -14,6 +14,8 @@ Starting from the second course, I will add an application on an open-source dat
 
 # Introduction to Deep Learning 
 
+## Context 
+
 Traditional machine learning models have always been very powerful to handle structured data and have been widely used by businesses for credit scoring, churn prediction, consumer targeting, and so on. 
 
 The success of these models highly depends on the performance of the feature engineering phase: the more we work close to the business to extract relevant knowledge from the structured data, the more powerful the model will be. 
@@ -22,7 +24,9 @@ When it comes to unstructured data (images, text, voice, videos), hand engineere
 
 Improvements in Hardware (GPUs) and Software (advanced models / research related to AI) also contributed to **deepen the learning** from data using Neural Networks.  
 
-The fundamental bulding block of Deep Learning is **The Perceptron** which is a single neuron in a Neural Network. 
+## Basic architecture  
+
+The fundamental bulding block of Deep Learning is the **Perceptron** which is a single neuron in a Neural Network. 
 
 Given a finite set of _m_ inputs (e.g. _m_ words or _m_ pixels), we multiply each input by a weight (_theta 1_ to _theta m_) then we sum up the weighted combination of inputs, add a bias and finally pass them through a non-linear activation function. That produces the output _Yhat_. 
 
@@ -39,11 +43,11 @@ Now, once we have understood the basic architecture of a deep neural network, le
 
 Let us say, for a set of X-ray images, we need the model to automatically distinguish those that are related to a sick patient from the others. 
 
-For that, machine learning models, like humans, need to learn to differentiate between the two categories of images by **observing** some images of both sick and healthy individuals. Hence, they automatically understand patterns that better describe each category. This is what we call **the training phase**.  
+For that, machine learning models, like humans, need to learn to differentiate between the two categories of images by **observing** some images of both sick and healthy individuals. Accordingly, they automatically understand patterns that better describe each category. This is what we call **the training phase**.  
 
 Concretely, a pattern is a weighted combination of some inputs (images, parts of images or other patterns). Hence, **the training phase is nothing more than the phase during which we estimate the weights (also called parameters) of the model.** 
 
-When we talk about estimation, we talk about an **objective function** we have to optimize. This function shall be constructed to reflect the best the performance of the training phase. When it comes to prediction tasks, this objective function is usually called **loss function** and measures the cost incurred from incorrect predictions. When the model predict something that is very close to the true output then the loss function is very low, and vice-versa. 
+When we talk about estimation, we talk about an **objective function** we have to optimize. This function shall be constructed to best reflect the performance of the training phase. When it comes to prediction tasks, this objective function is usually called **loss function** and measures the cost incurred from incorrect predictions. When the model predicts something that is very close to the true output then the loss function is very low, and vice-versa. 
 
 In the presence of input data, we calculate an empirical loss (binary cross entropy loss in case of classification and mean squared error loss in case of regression) that measures the total loss over our entire dataset: 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/EmpiricalLossFunction.PNG)
