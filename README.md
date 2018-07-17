@@ -41,6 +41,8 @@ Deep Neural Networks are no more than a **stacking** of multiple perceptrons (hi
 
 Now, once we have understood the basic architecture of a deep neural network, let us find out how it can be used for a given task. 
 
+## Training a Neural Network 
+
 Let us say, for a set of X-ray images, we need the model to automatically distinguish those that are related to a sick patient from the others. 
 
 For that, machine learning models, like humans, need to learn to differentiate between the two categories of images by **observing** some images of both sick and healthy individuals. Accordingly, they automatically understand patterns that better describe each category. This is what we call **the training phase**.  
@@ -78,11 +80,11 @@ Thus, the backpropagation consists in **repeating this process for every weight 
 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/Backpropagation.PNG)
 
-### Neural Networks in practice:
+## Neural Networks in practice:
 
 *  In presence of a large dataset, the computation of the gradient in respect of each weight can be very expensive (think about the chain rule in backpropagation). For that, we could compute the gradient on a subset of data (mini-bach) and use it as an estimate of the true gradient. This gives a more accurate estimation of the gradient than the stochastic gradient descent (SGD) which randomly takes only one observation and much more faster than calculating the gradient using all data. Using mini-baches for each iteration leads to fast training especially when we use different threads (GPU's). We can parallelize computing for each iteration: a bach for each weight and gradient is calculated in a seperate thread. Than, calculations are gathered together to complete the iteration  
 
-*  Juste like any other "classical" machine learning algorithm, Neural Networks could face the problem of overfitting. Ideally, in machine learning, **we want to build models that can learn representations from a training data and still generalize well on unseen test data**. Regularization is a technique that constrains our optimization problem to discourage complex models (i.e. to avoid memorizing data). When we talk about regularization, we generally talk about **Dropout** which is the process of randomly dropping out some proportion of the hidden neurals in each iteration during the training phase (dropout i.e. associated activations become 0) and/or **Early stopping** which consists in stopping training before we have a chance to overfit. For that, we calulate the loss in training and test phase relative to the number of training iterations. We stop learning when the loss function in the test phase starts to increase. 
+*  Juste like any other "classical" machine learning algorithm, Neural Networks could face the problem of overfitting. Ideally, in machine learning, **we want to build models that can learn representations from a training data and still generalize well on unseen test data**. Regularization is a technique that constrains our optimization problem to discourage complex models (i.e. to avoid memorizing data). When we talk about regularization, we generally talk about **Dropout** which is the process of randomly dropping out some proportion of the hidden neurals in each iteration during the training phase (dropout i.e. set associated activations to 0) and/or **Early stopping** which consists in stopping training before we have a chance to overfit. For that, we calulate the loss in training and test phase relative to the number of training iterations. We stop learning when the loss function in the test phase starts to increase. 
 
 
 
