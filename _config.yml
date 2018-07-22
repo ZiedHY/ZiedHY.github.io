@@ -2,5 +2,9 @@ markdown: kramdown
 theme: jekyll-theme-cayman
 title: ZiedHY.github.io
 description: Zied HY's Data Science Blog 
-show_downloads: true
 google_analytics: UA-122649407-1
+# Includes an icon in the footer for each username you enter
+footer-links:
+  email: ziedhy@gmail.com
+  linkedin: https://www.linkedin.com/in/zied-hajyahia/
+  github: https://github.com/ZiedHY
