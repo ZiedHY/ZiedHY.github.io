@@ -12,8 +12,6 @@ I will go through the first four courses:
 
 Starting from the second course, I will add an application on an open-source dataset for each course. 
 
-[Here is a link to the course site TEST](https://github.com/ZiedHY/ZiedHY.github.io/blob/master/index.md).
-
 # Introduction to Deep Learning 
 
 ## Context 
