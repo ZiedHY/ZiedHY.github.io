@@ -1,5 +1,3 @@
-## Deep Learning From Scratch
-
 I started reading about Deep Learning for over a year now through several articles and reserach papers that I came across mainly in LinkedIn, Medium and [Arxiv](https://arxiv.org/list/stat.ML/recent). 
 
 When I virtually attended the MIT 6.S191 Deep Learning courses during the last few weeks [(Here is a link to the course site)](http://introtodeeplearning.com/), I decided to start to put some structure in my understanding of Neural Networks through this series of articles. 
