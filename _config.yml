@@ -8,3 +8,28 @@ footer-links:
   email: ziedhy@gmail.com
   linkedin: https://www.linkedin.com/in/zied-hajyahia/
   github: https://github.com/ZiedHY
+
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+github_username:  ZiedHY
+
+gems:
+  - jekyll-archives
+  - jekyll-paginate
+  - jekyll-sitemap
+
+permalink: /:year/:month/:day/:title/
+paginate_path: /posts/:num/
+paginate: 10
+
+jekyll-archives:
+  enabled:
+    - categories
+  layout: category_archives
+  permalinks:
+    category: /categories/:name/
+plugins:
+  - jekyll-feed
+
+excerpt_separator: ""
