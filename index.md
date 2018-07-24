@@ -52,6 +52,7 @@ Concretely, a pattern is a weighted combination of some inputs (images, parts of
 When we talk about estimation, we talk about an **objective function** we have to optimize. This function shall be constructed to best reflect the performance of the training phase. When it comes to prediction tasks, this objective function is usually called **loss function** and measures the cost incurred from incorrect predictions. When the model predicts something that is very close to the true output then the loss function is very low, and vice-versa. 
 
 In the presence of input data, we calculate an empirical loss (binary cross entropy loss in case of classification and mean squared error loss in case of regression) that measures the total loss over our entire dataset: 
+
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/EmpiricalLossFunction.PNG)
 
 Since the loss is a function of the network weights, our task it to find the set of weights _theta_ that achieve the lowest loss: 
