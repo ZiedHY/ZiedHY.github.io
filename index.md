@@ -12,7 +12,7 @@ For each course, I will outline the main concepts and add more details and inter
 
 Starting from the second course, I will also add an application on an open-source dataset for each course. 
 
-Let's go! 
+That said, let's go! 
 
 # Introduction to Deep Learning 
 
