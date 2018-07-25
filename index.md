@@ -92,11 +92,11 @@ Thus, the backpropagation consists in **repeating this process for every weight 
 
 ## Conclusion:
 
-This first article of introduction to Deep Learning could be summarized in 3 key points: 
+This first article is an introduction to Deep Learning and could be summarized in 3 key points: 
 
 1.  First, we have learned about the fundamental building block of Deep Learning which is the Perceptron.  
 2.  Then, we have learned about stacking these perceptrons together to compose more complex hierarchical models and we learned how to mathematically optimize these models using backpropagation and gradient descent. 
-3.  Finally, we have seen some practical challenges of training these models in real life and some best practices as adaptive learning, batching and regularization to combat overfitting. 
+3.  Finally, we have seen some practical challenges of training these models in real life and some best practices like adaptive learning, batching and regularization to combat overfitting. 
 
 The next article will be about **Sequence modeling with Neural Networks**. We will learn how to model sequences, Recurrent Neural Networks (RNNs) and their short-term memory and Long Short Term Memory (LSTM) and their ability to keep track of information throughout many timesteps.  
 
