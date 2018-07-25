@@ -72,6 +72,7 @@ To minimize the loss function, we can apply the gradient descent algorithm:
 3.  The gradient direction indicates the direction to take in order to maximise the loss function. So, we take a small step in the opposite direction of gradient and we update weights' values accordingly using this update rule: 
 
 ![Octocat](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/ZiedHY-patch-1/UpdateRule.PNG)
+
 4.  We move continuously until convergence to reach the lowest point of this landscape (local minima). 
 
 #### NB: 
@@ -86,7 +87,7 @@ Thus, the backpropagation consists in **repeating this process for every weight 
 
 ## Neural Networks in practice:
 
-*  In the presence of a large dataset, the computation of the gradient in respect to each weight can be very expensive (think about the chain rule in backpropagation). For that, we could compute the gradient on a subset of data (mini-batch) and use it as an estimate of the true gradient. This gives a more accurate estimation of the gradient than the stochastic gradient descent (SGD) which randomly takes only one observation and much more faster than calculating the gradient using all data. Using mini-batches for each iteration leads to fast training especially when we use different threads (GPU's). We can parallelize computing for each iteration: a batch for each weight and gradient is calculated in a seperate thread. Then, calculations are gathered together to complete the iteration  
+*  In the presence of a large dataset, the computation of the gradient in respect to each weight can be very expensive (think about the chain rule in backpropagation). For that, we could compute the gradient on a subset of data (mini-batch) and use it as an estimate of the true gradient. This gives a more accurate estimation of the gradient than the stochastic gradient descent (SGD) which randomly takes only one observation and much more faster than calculating the gradient using all data. Using mini-batches for each iteration leads to fast training especially when we use different threads (GPU's). We can parallelize computing for each iteration: a batch for each weight and gradient is calculated in a seperate thread. Then, calculations are gathered together to complete the iteration.  
 
 *  Juste like any other "classical" machine learning algorithm, Neural Networks could face the problem of overfitting. Ideally, in machine learning, **we want to build models that can learn representations from a training data and still generalize well on unseen test data**. Regularization is a technique that constrains our optimization problem to discourage complex models (i.e. to avoid memorizing data). When we talk about regularization, we generally talk about **Dropout** which is the process of randomly dropping out some proportion of the hidden neurals in each iteration during the training phase (dropout i.e. set associated activations to 0) and/or **Early stopping** which consists in stopping training before we have a chance to overfit. For that, we calculate the loss in training and test phase relative to the number of training iterations. We stop learning when the loss function in the test phase starts to increase. 
 
