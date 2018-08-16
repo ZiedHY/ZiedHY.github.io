@@ -69,13 +69,13 @@ So, let us find out more about RNNs!
 
 A Recurrent Neural Network is architected in the same way as a "normal" Neural Network. We have some inputs, we have some hidden layers and we have some outputs. 
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Basic_Architecture_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Basic_Architecture_RNN.PNG)
 
 The only difference is that each hidden unit is doing a slightly different function. So, let us take a look at this one hidden unit to see exactly what it is doing. 
 
 A recurrent hidden unit computes a function of an input and its own previous output, also known as the cell state. For textual data, an input could be a word _x(i)_ in a sentence of _n_ words.  
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Hidden_Unit_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Hidden_Unit_RNN.PNG)
 
 _W_ and _U_ are weight matrices and _tanh_ is the hyperbolic tangent function. 
 
@@ -83,7 +83,7 @@ Similarly, at the next step, it computes a function of the new input and its pre
 
 A common way of viewing recurrent neural networks is by unfolding them across time. We can notice that ***we are using the same weight matrices _W_ and _U_ throughout the sequence. This solves our problem of parameter sharing***. We don't have new parameters for every point of the sequence. Thus, once we learn something, it can apply at any point in the sequence. 
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Unfolding_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Unfolding_RNN.PNG)
  
 The fact of not having new parameters for every point of the sequence also helps us ***deal with variable-length sequences***. 
 In case of a sequence that has a length of 4, we could unroll this RNN to four timesteps. In other cases, we can unroll it to ten timesteps since the length of the sequence is not prespecified in the algorithm. By unrolling we simply mean that we write out the network for the complete sequence. For example, if the sequence we care about is a sentence of 5 words, the network would be unrolled into a 5-layer neural network, one layer for each word.
@@ -102,11 +102,11 @@ Let us say, for a set of speeches in English, we need the model to automatically
 
 Naturally, because we have an output at every timestep, we can have a loss at every timestep. This loss reflects how much the predicted transcripts are close to the "official" transcripts.
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Loss_TimeStep_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Loss_TimeStep_RNN.PNG)
 
 The total loss is just the sum of the losses at every timestep.  
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Total_Loss_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Total_Loss_RNN.PNG)
 
 Since the loss is a function of the network weights, our task it to find the set of weights _theta_ that achieve the lowest loss. For that, as explained in the first article "Introduction to Deep Learning", we we can apply ***the gradient descent algorithm with backpropagation (chain rule) at every timestep***, thus taking into account the additional time dimension. 
 
@@ -114,15 +114,15 @@ _W_ and _U_ are our two weight matrices. Let us try it out for _W_.
 
 Knowing that the total loss is the sum of the losses at every timestep, the total gradient is just the sum of the gradients at every timestep: 
  
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Derivative_Loss_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Derivative_Loss_RNN.PNG)
 
 And now, we can focus on a single timestep to calculate the derivative of the loss with respect to _W_. 
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Graph_Chain_Rule_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Graph_Chain_Rule_RNN.PNG)
 
 Easy to handle: we just use backpropagation.
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Chain_Rule_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Chain_Rule_RNN.PNG)
 
 We remember that ***_s2_ = _tanh_(_Wx1_ + _Us1_)*** so s2 also depends on s1 and s1 also depends on W. ***This actually means that we can not just leave the the derivative of _s2_ with respect to _W_ as a constant. We have to expand it out farther.*** 
 
@@ -130,17 +130,17 @@ So how does _s2_ depend on _W_?
 
 It depends directly on W because it feeds right in (c.f. above formula of _s2_). We also saw that _s2_ depends on _s1_ which depends on W. And we can also see that _s2_ depends on _s0_ which also depends on W. 
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Derivative_Current_State_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Derivative_Current_State_RNN.PNG)
 
 Thus, the derivative of the loss with respect to _W_ could be written as follows: 
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Derivative_Loss_Chain_Rule_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Derivative_Loss_Chain_Rule_RNN.PNG)
 
 We can see that the last two terms are basically summing the contributions of _W_ in previous timesteps to the error at timestep _t_. This is key to understand how we model long-term dependencies.  From one iteration to another, the gradient descent algorithm allows to shift network parameters such that they include contributions to the error from past timesteps.
 
 For any timestep _t_, the derivative of the loss with respect to _W_ could be written as follows:
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Derivative_Loss_Chain_Rule_RNN_Generic.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Derivative_Loss_Chain_Rule_RNN_Generic.PNG)
 
 So to train the model i.e. to estimate the weights of the network, we apply this same process of backpropagation through time for every weight (parameter) and then we use it in the process of gradient descent. 
 
@@ -148,11 +148,11 @@ So to train the model i.e. to estimate the weights of the network, we apply this
 
 In practice RNNs are a bit difficult to train. To understand why, let’s take a closer look at the gradient we calculated above:
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Expand_Gradient_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Expand_Gradient_RNN.PNG)
 
 We can see that as the gap between timesteps gets bigger, the product of the gradients gets longer and longer. But, what are each of these terms?  
 
-![Branching](C:\Users\zhajyahi\Documents\DeepLearning\MIT 6.S191\ZiedHY.github.io\Vanishing_Gradient_RNN.PNG)
+![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Vanishing_Gradient_RNN.PNG)
 
 Each term is basically a product of two terms: transposed _W_ and a second one that depends on f'. 
 
@@ -169,3 +169,10 @@ Fortunately, there are a few ways to combat the vanishing gradient problem. ***P
 An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are the perhaps most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next article.
 
 It will come soon! 
+
+### Resources I used when writing this article: 
+*    http://introtodeeplearning.com/
+*    http://proceedings.mlr.press/v28/pascanu13.pdf
+*    https://cs.stanford.edu/~quocle/paragraph_vector.pdf
+*    http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+*    [Backpropagation Through Time and Vanishing Gradients](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/)
