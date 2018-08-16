@@ -1,4 +1,4 @@
-This second article will be about **Sequence modeling with Neural Networks**. We will learn how to model sequences with a focus on Recurrent Neural Networks (RNNs) and their short-term memory and Long Short Term Memory (LSTM) and their ability to keep track of information throughout many timesteps.  
+This second article will be about **Sequence modeling with Neural Networks** and will be split into two parts. In the first part, we will learn how to model sequences with a focus on Recurrent Neural Networks (RNNs) and their short-term memory. In the second part, we will go further and learn about Long Short Term Memory (LSTMs) and their ability to keep track of information throughout many timesteps.  
 
 Let us go! 
 
@@ -166,5 +166,6 @@ Thus, with small values in the matrix and multiple matrix multiplications, the *
 
 Fortunately, there are a few ways to combat the vanishing gradient problem. ***Proper initialization of the _W_ matrix*** can reduce the effect of vanishing gradients. So can regularization. A more preferred solution is to use ***ReLU*** instead of tanh or sigmoid activation functions. The ReLU derivative is a constant of either 0 or 1, so it isn’t as likely to suffer from vanishing gradients. 
 
-An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are the perhaps most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next section.
+An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are the perhaps most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next article.
 
+It will come soon! 
