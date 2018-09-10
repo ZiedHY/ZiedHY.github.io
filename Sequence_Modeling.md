@@ -6,13 +6,13 @@ Now, let's begin the first part of this article.  -->
 
 ## Context 
 
-In the previous course [Link], we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic, whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
+In the previous course [Link], we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
 
 Inspite of this, you have probably heard about Multilayer Perceptrons (MLPs), Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), LSTM, Auto-Encoders, etc. These deep learning algorithms are different from each other. Each model is known to be particulary performant in some specific tasks, even though, fundamentally, they all share the same basic architecture. 
 
 What makes the difference between them is their ability to be more suited for some data structures: dealing with text could be different from dealing with images, which in turn could be different from dealing with signals. 
 
-In the balance of this article, we will focus on modeling **sequences** as a well-known data structure and will study its ***specific learning framework***.  
+In the balance of this article, we will focus on modeling **sequences** as a well-known data structure and will study its **specific learning framework**.  
 
 Applications of sequence modeling are plentiful in day-to-day business practice. Some of them emerged to meet today's challenges in terms of quality of service and customer engagement. Here some examples: 
 
@@ -40,16 +40,14 @@ In fact, machine learning algorithms typically require the text input to be repr
 
 Perhaps the most common fixed-length vector representation for texts is the ***bag-of-words*** or bag-of-n-grams due to its simplicity, efficiency and often surprising accuracy. However, the bag-of-words (BOW) representation has many disadvantages:  
 
-First, the word order is lost, and thus different sentences can have exactly the same representation, as long as the same words are used. Example: “The food was good, not bad at all.” vs “The food was bad, not good at all.”. 
-
+*   First, the word order is lost, and thus different sentences can have exactly the same representation, as long as the same words are used. Example: “The food was good, not bad at all.” vs “The food was bad, not good at all.”. 
 Even though bag-of-n-grams considers the word order in short context, it suffers from data sparsity and high dimensionality. 
 
-In addition, Bag-of-words and bag-of-n-grams have very little sense about the semantics of the words or more formally the distances between the words. This means that words “powerful”, “strong” and “Paris” are equally distant despite the fact that semantically, “powerful” should be closer to “strong” than “Paris”. 
+*   In addition, Bag-of-words and bag-of-n-grams have very little sense about the semantics of the words or more formally the distances between the words. This means that words “powerful”, “strong” and “Paris” are equally distant despite the fact that semantically, “powerful” should be closer to “strong” than “Paris”. 
 
-Humans don’t start their thinking from scratch every second. As you read this article, you understand each word based on your understanding of previous words. Traditional neural networks can’t do this, and it seems like a major shortcoming. Bag-of-words and bag-of-n-grams as text representations does not allow to keep track of long-term dependencies inside the same sentence or paragraph. 
+*   Humans don’t start their thinking from scratch every second. As you read this article, **you understand each word based on your understanding of previous words**. Traditional neural networks can’t do this, and it seems like a major shortcoming. Bag-of-words and bag-of-n-grams as text representations do not allow to keep track of long-term dependencies inside the same sentence or paragraph. 
 
-Another disadvantage of modeling sequences with traditional Neural Networks (e.g. Feedforward Neural Networks) is the fact of not sharing parameters across time. 
-
+*   Another disadvantage of modeling sequences with traditional Neural Networks (e.g. Feedforward Neural Networks) is the fact of not sharing parameters across time. 
 Let us take for example these two sentences : "On Monday, it was snowing" and "It was snowing on Monday". These sentences mean the same thing, though the details are in different parts of the sequence.  Actually, when we feed these two sentences 
 into a Feedforward Neural Network for a prediction task, the model will assign different weights to "On Monday" at each moment in time. ***Things we learn about the sequence won’t transfer if they appear at different points in the sequence.***
 Sharing parameters gives the network the ability to look for a given feature everywhere in the sequence, rather than in just a certain area. 
@@ -68,19 +66,19 @@ So, let us find out more about RNNs!
 
 ### How a Recurrent Neural Network works? 
 
-A Recurrent Neural Network is architected in the same way as a "normal" Neural Network. We have some inputs, we have some hidden layers and we have some outputs. 
+A Recurrent Neural Network is architected in the same way as a "traditional" Neural Network. We have some inputs, we have some hidden layers and we have some outputs. 
 
 ![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Basic_Architecture_RNN.PNG)
 
 The only difference is that each hidden unit is doing a slightly different function. So, let us take a look at this one hidden unit to see exactly what it is doing. 
 
-A recurrent hidden unit computes a function of an input and its own previous output, also known as the cell state. For textual data, an input could be a word _x(i)_ in a sentence of _n_ words.  
+A recurrent hidden unit computes a function of an input and its own previous output, also known as the cell state. For textual data, an input could be a vector representing a word _x(i)_ in a sentence of _n_ words (also known as word embedding).  
 
 ![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Hidden_Unit_RNN.PNG)
 
 _W_ and _U_ are weight matrices and _tanh_ is the hyperbolic tangent function. 
 
-Similarly, at the next step, it computes a function of the new input and its previous cell state: ***_s2_ = _tanh_(_Wx1_ + _Us1_)***. This function is similar to the function associated to hidden unit in a feed-forward Network. The difference,  proper to sequences, is that we are adding an additional term to incorporate its own previous state. 
+Similarly, at the next step, it computes a function of the new input and its previous cell state: **_s2_ = _tanh_(_Wx1_ + _Us1_)**. This function is similar to the function associated to a hidden unit in a feed-forward Network. The difference,  proper to sequences, is that we are adding an additional term to incorporate its own previous state. 
 
 A common way of viewing recurrent neural networks is by unfolding them across time. We can notice that ***we are using the same weight matrices _W_ and _U_ throughout the sequence. This solves our problem of parameter sharing***. We don't have new parameters for every point of the sequence. Thus, once we learn something, it can apply at any point in the sequence. 
 
@@ -92,7 +90,7 @@ In case of a sequence that has a length of 4, we could unroll this RNN to four t
 #### NB: 
 
 *    _Sn_, the cell state at time _n_, can contain information from all of the past timesteps: each cell state is a function of the previous self state which in turn is a function of the previous cell state. ***This solves our issue of long-term dependencies***.  
-*   The above diagram has outputs at each time step, but depending on the task this may not be necessary. For example, when predicting the sentiment of a sentence we may only care about the final output, not the sentiment after each word. Similarly, we may not need inputs at each time step. The main feature of an RNN is its hidden state, which captures some information about a sequence.
+*   The above diagram has outputs at each time step, but depending on the task this may not be necessary. For example, when predicting the sentiment of a sentence, we may only care about the final output, not the sentiment after each word. Similarly, we may not need inputs at each time step. The main feature of an RNN is its hidden state, which captures some information about a sequence.
 
 
 Now we saw how a single hidden unit works. But in a full network, we would have many hidden units and even many layers of many hidden units. So let us find out how do we train an RNN. 
@@ -155,7 +153,7 @@ We can see that as the gap between timesteps gets bigger, the product of the gra
 
 ![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Vanishing_Gradient_RNN.PNG)
 
-Each term is basically a product of two terms: transposed _W_ and a second one that depends on f'. 
+Each term is basically a product of two terms: transposed _W_ and a second one that depends on f', the derivative of the activation function. 
 
 *    Initial weights _W_ are usually sampled from standard normal distribution and then mostly < 1. 
 
@@ -163,11 +161,13 @@ Each term is basically a product of two terms: transposed _W_ and a second one t
 the second term is a Jacobian matrix because we are taking the derivative of a vector function with respect to a vector and 
 its 2-norm, which you can think of it as an absolute value, ***has an upper bound of 1***. This makes intuitive sense because our tanh (or sigmoid) activation function maps all values into a range between -1 and 1, and the derivative f' is bounded by 1 (1/4 in the case of sigmoid). 
 
-Thus, with small values in the matrix and multiple matrix multiplications, the ***gradient values are shrinking exponentially fast, eventually vanishing completely after a few time steps***. Gradient contributions from “far away” steps become zero, and the state at those steps doesn’t contribute to what you are learning: You end up not learning long-range dependencies. Vanishing gradients aren’t exclusive to RNNs. They also happen in deep Feedforward Neural Networks. It’s just that RNNs tend to be very deep (as deep as the sentence length in our case), which makes the problem a lot more common.
+Thus, with small values in the matrix and multiple matrix multiplications, the ***gradient values are shrinking exponentially fast, eventually vanishing completely after a few time steps***. Gradient contributions from “far away” steps become zero, and the state at those steps doesn’t contribute to what you are learning: you end up not learning long-range dependencies. 
+
+Vanishing gradients aren’t exclusive to RNNs. They also happen in deep Feedforward Neural Networks. It’s just that RNNs tend to be very deep (as deep as the sentence length in our case), which makes the problem a lot more common.
 
 Fortunately, there are a few ways to combat the vanishing gradient problem. ***Proper initialization of the _W_ matrix*** can reduce the effect of vanishing gradients. So can regularization. A more preferred solution is to use ***ReLU*** instead of tanh or sigmoid activation functions. The ReLU derivative is a constant of either 0 or 1, so it isn’t as likely to suffer from vanishing gradients. 
 
-An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are the perhaps most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next part of this article.
+An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are perhaps the most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next part of this article.
 
 It will come soon! 
 
