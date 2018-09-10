@@ -1,31 +1,32 @@
-This second article will be about **Sequence modeling with Neural Networks** and will be split into two parts. In the first part, we will learn how to model sequences with a focus on Recurrent Neural Networks (RNNs) and their short-term memory. In the second part, we will go further and learn about Long Short Term Memory (LSTMs) and their ability to keep track of information throughout many timesteps.  
+<!-- This second article will be about **Sequence modeling with Neural Networks** and will be split into two parts. In the first part, we will learn how to model sequences with a focus on Recurrent Neural Networks (RNNs) and their short-term memory. In the second part, we will go further and learn about Long Short Term Memory (LSTMs) and their ability to keep track of information throughout many timesteps.  
 
-Let us go! 
+Now, let's begin the first part of this article.  -->
 
-# Sequence Modeling with Neural Networks 
+# Sequence Modeling with Neural Networks - Part I
 
 ## Context 
 
-In the previous course, we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic, whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
+In the previous course [Link], we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic, whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
 
 Inspite of this, you have probably heard about Multilayer Perceptrons (MLPs), Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), LSTM, Auto-Encoders, etc. These deep learning algorithms are different from each other. Each model is known to be particulary performant in some specific tasks, even though, fundamentally, they all share the same basic architecture. 
 
 What makes the difference between them is their ability to be more suited for some data structures: dealing with text could be different from dealing with images, which in turn could be different from dealing with signals. 
 
-In the balance of this article, we will focus on modeling **sequences** as a well-known data structure. 
+In the balance of this article, we will focus on modeling **sequences** as a well-known data structure and will study its ***specific learning framework***.  
 
-Today's challenges in terms of quality of service and customer engagement revealed many applications of sequence modeling in day-to-day business practice:
+Applications of sequence modeling are plentiful in day-to-day business practice. Some of them emerged to meet today's challenges in terms of quality of service and customer engagement. Here some examples: 
 
 *   Speech Recognition to listen to the voice of customers.
-*   Machine Language Translation from diverse source languages to more common languages. 
-*   Name entity/Subject extraction to find the main subject of the customer’s query once translated. 
+*   Machine Language Translation from diverse source languages to more common languages.  
+*   Topic Extraction to find the main subject of the customer’s query once translated. 
 *   Speech Generation to have conversational ability and engage with customers just like a human. 
-*   Text Summarization of customer feedback to work on key challenges/pain points.   
+*   Text Summarization of customer feedback to work on key challenges and pain points.   
 
-In the car industry, self-parking is also a sequence modeling task because parking is a sequence of mouvements and the next movement depend on the other previous mouvements. 
+In the car industry, self-parking is also a sequence modeling task. In fact, parking could be seen as a sequence of mouvements where next movement depend on the other previous mouvements. 
 
+Other applications cover text classification, translating videos to natural language, image caption generation, hand writing recognition/generation, anomaly detection, and many more in the future...which none of us can’t think (or aware) at the moment. 
 
-**Add a reference to the application that will follow in this article**
+However, before we go any further in the applications of Sequence Modeling, let us understand what we are dealing with when we talk about sequences.   
 
 ## Introduction to Sequence Modeling  
 
@@ -37,7 +38,7 @@ For illustration purposes and with no loss of generality, let us focus on text a
 
 In fact, machine learning algorithms typically require the text input to be represented as a ***fixed-length*** vector. Many operations needed to train the model (network) can be expressed through algebraic operations on the matrix of input feature values and the matrix of weights (think about a n-by-p design matrix, where n is the number of samples observed, and p is the number of variables measured in all samples). 
 
-Perhaps the most common fixed-length vector representation for texts is the bag-of-words or bag-of-n-grams due to its simplicity, efficiency and often surprising accuracy. However, the bag-of-words (BOW) has many disadvantages:  
+Perhaps the most common fixed-length vector representation for texts is the ***bag-of-words*** or bag-of-n-grams due to its simplicity, efficiency and often surprising accuracy. However, the bag-of-words (BOW) representation has many disadvantages:  
 
 First, the word order is lost, and thus different sentences can have exactly the same representation, as long as the same words are used. Example: “The food was good, not bad at all.” vs “The food was bad, not good at all.”. 
 
@@ -166,7 +167,7 @@ Thus, with small values in the matrix and multiple matrix multiplications, the *
 
 Fortunately, there are a few ways to combat the vanishing gradient problem. ***Proper initialization of the _W_ matrix*** can reduce the effect of vanishing gradients. So can regularization. A more preferred solution is to use ***ReLU*** instead of tanh or sigmoid activation functions. The ReLU derivative is a constant of either 0 or 1, so it isn’t as likely to suffer from vanishing gradients. 
 
-An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are the perhaps most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next article.
+An even more popular solution is to use Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architectures. LSTMs were first proposed in 1997 and are the perhaps most widely used models in NLP today. GRUs, first proposed in 2014, are simplified versions of LSTMs. Both of these RNN architectures were explicitly designed to deal with vanishing gradients and efficiently learn long-range dependencies. We’ll cover them in the next part of this article.
 
 It will come soon! 
 
