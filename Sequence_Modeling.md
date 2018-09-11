@@ -78,8 +78,7 @@ So, let us find out more about RNNs!
 
 A Recurrent Neural Network is architected in the same way as a "traditional" Neural Network. We have some inputs, we have some hidden layers and we have some outputs. 
 
-![](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Basic_Architecture_RNN.PNG)
-
+![](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Basic_Architecture_RNN.PNG) 
 The only difference is that each hidden unit is doing a slightly different function. So, let us take a look at this one hidden unit to see exactly what it is doing. 
 
 A recurrent hidden unit computes a function of an input and its own previous output, also known as the cell state. For textual data, an input could be a vector representing a word _x(i)_ in a sentence of _n_ words (also known as word embedding).  
