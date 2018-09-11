@@ -183,7 +183,7 @@ It will come soon!
 
 ### Resources I used when writing this article: 
 *    http://introtodeeplearning.com/
-*    http://proceedings.mlr.press/v28/pascanu13.pdf
-*    https://cs.stanford.edu/~quocle/paragraph_vector.pdf
-*    http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+*    [On the difficulty of training recurrent neural networks](http://proceedings.mlr.press/v28/pascanu13.pdf)
+*    [Distributed Representations of Sentences and Documents](https://cs.stanford.edu/~quocle/paragraph_vector.pdf)
+*    [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 *    [Backpropagation Through Time and Vanishing Gradients](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/)
