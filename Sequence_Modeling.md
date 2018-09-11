@@ -15,7 +15,7 @@ Now, let's begin the first part of this article.  -->
 
 ## Context 
 
-In the previous course [Introduction to Deep Learning](Introduction_Deep_Learning.html), we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
+In the previous course [Introduction to Deep Learning](https://ziedhy.github.io/2018/08/Introduction_Deep_Learning.html), we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
 
 Inspite of this, you have probably heard about Multilayer Perceptrons (MLPs), Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), LSTM, Auto-Encoders, etc. These deep learning algorithms are different from each other. Each model is known to be particulary performant in some specific tasks, even though, fundamentally, they all share the same basic architecture. 
 
