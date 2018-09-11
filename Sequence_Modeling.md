@@ -22,7 +22,7 @@ Applications of sequence modeling are plentiful in day-to-day business practice.
 *   Speech Generation to have conversational ability and engage with customers just like a human. 
 *   Text Summarization of customer feedback to work on key challenges and pain points.   
 
-In the car industry, self-parking is also a sequence modeling task. In fact, parking could be seen as a sequence of mouvements where next movement depend on the other previous mouvements. 
+In the car industry, self-parking is also a sequence modeling task. In fact, parking could be seen as a sequence of mouvements where next movement depends on the other previous mouvements. 
 
 Other applications cover text classification, translating videos to natural language, image caption generation, hand writing recognition/generation, anomaly detection, and many more in the future...which none of us can’t think (or aware) at the moment. 
 
@@ -123,7 +123,7 @@ Easy to handle: we just use backpropagation.
 
 ![Branching](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Chain_Rule_RNN.PNG)
 
-We remember that ***_s2_ = _tanh_(_Wx1_ + _Us1_)*** so s2 also depends on s1 and s1 also depends on W. ***This actually means that we can not just leave the the derivative of _s2_ with respect to _W_ as a constant. We have to expand it out farther.*** 
+We remember that ***_s2_ = _tanh_(_Wx1_ + _Us1_)*** so s2 also depends on s1 and s1 also depends on W. ***This actually means that we can not just leave the derivative of _s2_ with respect to _W_ as a constant. We have to expand it out farther.*** 
 
 So how does _s2_ depend on _W_? 
 
