@@ -15,31 +15,31 @@ Now, let's begin the first part of this article.  -->
 
 ## Context 
 
-In the previous course [Introduction to Deep Learning](https://ziedhy.github.io/2018/08/Introduction_Deep_Learning.html), we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic whatever the application: a stacking of several perceptrons to compose complex hierarchical models and optimization of these models using gradient descent and backpropagation. 
+In the previous course [Introduction to Deep Learning](https://ziedhy.github.io/2018/08/Introduction_Deep_Learning.html), we saw how to use Neural Networks to model a dataset of many examples. The good news is that the basic architecture of Neural Networks is quite generic whatever the application: a stacking of several perceptrons to compose complex hierarchical models and their optimization using gradient descent and backpropagation. 
 
-Inspite of this, you have probably heard about Multilayer Perceptrons (MLPs), Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), LSTM, Auto-Encoders, etc. These deep learning algorithms are different from each other. Each model is known to be particulary performant in some specific tasks, even though, fundamentally, they all share the same basic architecture. 
+Inspite of this, you have probably heard about Multilayer Perceptrons (MLPs), Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), LSTM, Auto-Encoders, etc. These deep learning models are different from each other. Each model is known to be particulary performant in some specific tasks, even though, fundamentally, they all share the same basic architecture. 
 
-What makes the difference between them is their ability to be more suited for some data structures: dealing with text could be different from dealing with images, which in turn could be different from dealing with signals. 
+What makes the difference between them is their ability to be more suited for some data structures: text processing could be different from image processing, which in turn could be different from signal processing. 
 
-In the balance of this article, we will focus on modeling **sequences** as a well-known data structure and will study its **specific learning framework**.  
+In the context of this post, we will focus on modeling **sequences** as a well-known data structure and will study its **specific learning framework**.  
 
 Applications of sequence modeling are plentiful in day-to-day business practice. Some of them emerged to meet today's challenges in terms of quality of service and customer engagement. Here some examples: 
 
 *   Speech Recognition to listen to the voice of customers.
 *   Machine Language Translation from diverse source languages to more common languages.  
-*   Topic Extraction to find the main subject of the customer’s query once translated. 
-*   Speech Generation to have conversational ability and engage with customers just like a human. 
+*   Topic Extraction to find the main subject of customer’s translated query. 
+*   Speech Generation to have conversational ability and engage with customers in a human like manner. 
 *   Text Summarization of customer feedback to work on key challenges and pain points.   
 
-In the car industry, self-parking is also a sequence modeling task. In fact, parking could be seen as a sequence of mouvements where the next movement depends on the other previous mouvements. 
+In the auto industry, self-parking is also a sequence modeling task. In fact, parking could be seen as a sequence of mouvements where the next movement depends on the previous ones.
 
-Other applications cover text classification, translating videos to natural language, image caption generation, hand writing recognition/generation, anomaly detection, and many more in the future...which none of us can’t think (or aware) at the moment. 
+Other applications cover text classification, translating videos to natural language, image caption generation, hand writing recognition/generation, anomaly detection, and many more in the future...which none of us can think (or aware) at the moment. 
 
 However, before we go any further in the applications of Sequence Modeling, let us understand what we are dealing with when we talk about sequences.   
 
 ## Introduction to Sequence Modeling  
 
-Sequences are a data structure where each example could be seen as a series of data points. This sentence: "I am currently reading an article about sequence modeling with Neural Networks" is an example that consists of multiple words and words depend on each other. The same applies to medical records. One single medical record consists in many measurments across the time. It is the same for speech waveforms. 
+Sequences are a data structure where each example could be seen as a series of data points. This sentence: "I am currently reading an article about sequence modeling with Neural Networks" is an example that consists of multiple words and words depend on each other. The same applies to medical records. One single medical record consists in many measurments across time. It is the same for speech waveforms. 
 
 ***So why we need a different learning framework to model sequences and what are the special features that we are looking for in this framework?***
 
@@ -52,7 +52,7 @@ Perhaps the most common fixed-length vector representation for texts is the **ba
 *   First, the word order is lost, and thus different sentences can have exactly the same representation, as long as the same words are used. Example: “The food was good, not bad at all.” vs “The food was bad, not good at all.”. 
 Even though bag-of-n-grams considers the word order in short context, it suffers from data sparsity and high dimensionality. 
 
-*   In addition, Bag-of-words and bag-of-n-grams have very little sense about the semantics of the words or more formally the distances between the words. This means that words “powerful”, “strong” and “Paris” are equally distant despite the fact that semantically, “powerful” should be closer to “strong” than “Paris”. 
+*   In addition, Bag-of-words and bag-of-n-grams have very little knowledge about the semantics of the words or more formally the distances between the words. This means that words “powerful”, “strong” and “Paris” are equally distant despite the fact that semantically, “powerful” should be closer to “strong” than “Paris”. 
 
 *   Humans don’t start their thinking from scratch every second. As you read this article, **you understand each word based on your understanding of previous words**. Traditional neural networks can’t do this, and it seems like a major shortcoming. Bag-of-words and bag-of-n-grams as text representations do not allow to keep track of long-term dependencies inside the same sentence or paragraph. 
 
@@ -79,7 +79,7 @@ So, let us find out more about RNNs!
 A Recurrent Neural Network is architected in the same way as a "traditional" Neural Network. We have some inputs, we have some hidden layers and we have some outputs. 
 
 ![](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Basic_Architecture_RNN.PNG) 
-The only difference is that each hidden unit is doing a slightly different function. So, let us take a look at this one hidden unit to see exactly what it is doing. 
+The only difference is that each hidden unit is doing a slightly different function. So, let's explore how this hidden unit works. 
 
 A recurrent hidden unit computes a function of an input and its own previous output, also known as the cell state. For textual data, an input could be a vector representing a word _x(i)_ in a sentence of _n_ words (also known as word embedding).  
 
@@ -87,7 +87,7 @@ A recurrent hidden unit computes a function of an input and its own previous out
 
 _W_ and _U_ are weight matrices and _tanh_ is the hyperbolic tangent function. 
 
-Similarly, at the next step, it computes a function of the new input and its previous cell state: **_s2_ = _tanh_(_Wx1_ + _Us1_)**. This function is similar to the function associated to a hidden unit in a feed-forward Network. The difference,  proper to sequences, is that we are adding an additional term to incorporate its own previous state. 
+Similarly, at the next step, it computes a function of the new input and its previous cell state: **_s2_ = _tanh_(_Wx1_ + _Us1_)**. This behavior is similar to a hidden unit in a feed-forward Network. The difference,  proper to sequences, is that we are adding an additional term to incorporate its own previous state. 
 
 A common way of viewing recurrent neural networks is by unfolding them across time. We can notice that **we are using the same weight matrices _W_ and _U_ throughout the sequence. This solves our problem of parameter sharing**. We don't have new parameters for every point of the sequence. Thus, once we learn something, it can apply at any point in the sequence. 
 
@@ -102,11 +102,11 @@ In case of a sequence that has a length of 4, we could unroll this RNN to four t
 *   The above diagram has outputs at each time step, but depending on the task this may not be necessary. For example, when predicting the sentiment of a sentence, we may only care about the final output, not the sentiment after each word. Similarly, we may not need inputs at each time step. The main feature of an RNN is its hidden state, which captures some information about a sequence.
 
 
-Now we saw how a single hidden unit works. But in a full network, we would have many hidden units and even many layers of many hidden units. So let us find out how do we train an RNN. 
+Now that we understand how a single hidden unit works, we need to figure out how to train an entire Recurrent Neural Network made up of many hidden units and even many layers of many hidden units. 
  
 ### How do we train a Recurrent Neural Network? 
 
-Let us say, for a set of speeches in English, we need the model to automatically convert the spoken language into text i.e. at each timestep, the model produces a prediction of a transcript (an output) on the basis of the part of speech at this timestep (the new input) and the previous transcript (the previous cell state). 
+Let's consider the following task: for a set of speeches in English, we need the model to automatically convert the spoken language into text i.e. at each timestep, the model produces a prediction of a transcript (an output) based on the part of speech at this timestep (the new input) and the previous transcript (the previous cell state). 
 
 Naturally, because we have an output at every timestep, we can have a loss at every timestep. This loss reflects how much the predicted transcripts are close to the "official" transcripts.
 
@@ -136,7 +136,7 @@ We remember that ***_s2_ = _tanh_(_Wx1_ + _Us1_)*** so s2 also depends on s1 and
 
 So how does _s2_ depend on _W_? 
 
-It depends directly on W because it feeds right in (c.f. above formula of _s2_). We also saw that _s2_ depends on _s1_ which depends on W. And we can also see that _s2_ depends on _s0_ which also depends on W. 
+It depends directly on W because it feeds right in (c.f. above formula of _s2_). We also know that _s2_ depends on _s1_ which depends on W. And we can also see that _s2_ depends on _s0_ which also depends on W. 
 
 ![](https://raw.githubusercontent.com/ZiedHY/ZiedHY.github.io/master/Images/Sequence%20Modeling/Derivative_Current_State_RNN.PNG)
 
