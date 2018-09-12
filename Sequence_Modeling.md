@@ -1,5 +1,5 @@
 ---
-title: Deep Learning From Scratch
+title: Sequence Modeling with Neural Networks
 author: Zied HY's Data Science Blog
 output:
   prettydoc::html_pretty:

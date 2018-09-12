@@ -1,5 +1,5 @@
 ---
-title: Deep Learning From Scratch
+title: Introduction to Deep Learning
 author: Zied HY's Data Science Blog
 output:
   prettydoc::html_pretty:
